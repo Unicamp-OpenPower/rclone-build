@@ -16,7 +16,7 @@ script:
   - cd rclone
   - go build
   - ls -a
-  - ./rclone
+  - ./rclone --help
 
 
 
