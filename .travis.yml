@@ -6,24 +6,29 @@ cache:
   directories:
     - $HOME/.cache/go-build
     - $HOME/gopath/pkg/mod
-env:
-  - VERSION=v1.51.0
 
 before_install:
   - sudo apt-get update
-  - sudo apt-get install build-essential python3 tar wget
+  - sudo apt-get install build-essential python3
 
 script:
-#  - RELEASE_VERSION=$(cat release_version.txt)
-  - wget https://github.com/rclone/rclone/releases/download/$VERSION/rclone-$VERSION.tar.gz
-  - tar -xzf rclone-$VERSION.tar.gz
-  - mv rclone-$VERSION rclone
+  - git clone --depth 1 https://github.com/rclone/rclone.git
   - cd rclone
-  - go get github.com/rclone/rclone/backend/all github.com/rclone/rclone/cmd github.com/rclone/rclone/cmd/all github.com/rclone/rclone/lib/plugin
   - go build
-  - mkdir output
-  - mv rclone output/rclone-$VERSION
-  - ls -la output
+  - ls -a
+
+
+
+#  - RELEASE_VERSION=$(cat release_version.txt)
+#  - wget https://github.com/rclone/rclone/releases/download/$VERSION/rclone-$VERSION.tar.gz
+#  - tar -xzf rclone-$VERSION.tar.gz
+#  - mv rclone-$VERSION rclone
+#  - cd rclone
+#  - go get github.com/rclone/rclone/backend/all github.com/rclone/rclone/cmd github.com/rclone/rclone/cmd/all github.com/rclone/rclone/lib/plugin
+#  - go build
+#  - mkdir output
+#  - mv rclone output/rclone-$VERSION
+#  - ls -la output
 
 #deploy:
 #  provider: script  
