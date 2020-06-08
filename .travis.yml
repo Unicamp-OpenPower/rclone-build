@@ -1,7 +1,7 @@
 language: go
 os: linux
 arch: ppc64le
-go: "1.13.x"
+go: "1.14.x"
 cache:
   directories:
     - $HOME/.cache/go-build
@@ -14,6 +14,7 @@ before_install:
 script:
   - git clone --depth 1 https://github.com/rclone/rclone.git
   - cd rclone
+  - go get github.com/rclone/rclone/backend/all github.com/rclone/rclone/cmd github.com/rclone/rclone/cmd/all github.com/rclone/rclone/lib/plugin
   - go build
   - ls -a
   - ./rclone --help
