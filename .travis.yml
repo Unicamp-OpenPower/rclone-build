@@ -1,7 +1,8 @@
 language: go
 os: linux
 arch: ppc64le
-go: "1.14.x"
+dist: focal
+go: "1.16.x"
 cache:
   directories:
     - $HOME/.cache/go-build
